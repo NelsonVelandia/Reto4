@@ -38,7 +38,7 @@ public class Reservation implements Serializable {
     private Date devolutionDate;
     
     @Column
-    private String status = "created";
+    private String status;
     
     
     @ManyToOne
@@ -53,7 +53,7 @@ public class Reservation implements Serializable {
     private Client client;
     
            
-    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservation")
+    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservation")//agrego una s a reservation 27-10-21
     @JsonIgnoreProperties("reservation")
     private Score score;
     
@@ -115,5 +115,4 @@ public class Reservation implements Serializable {
         this.score = score;
     }
  
-    
 }

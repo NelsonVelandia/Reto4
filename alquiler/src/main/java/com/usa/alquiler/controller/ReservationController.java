@@ -2,6 +2,8 @@
 package com.usa.alquiler.controller;
 
 import com.usa.alquiler.entity.Reservation;
+import com.usa.alquiler.entity.custom.CountClients;
+import com.usa.alquiler.entity.custom.DescriptionAmount;
 import com.usa.alquiler.services.ReservationService;
 import java.util.List;
 import java.util.Optional;
@@ -59,4 +61,17 @@ public class ReservationController {
         return reservationService.deleteReservation(id);
     }
     
+    @GetMapping("/report-status")//getStatusReport
+    public DescriptionAmount getReservationStatus(){
+        return reservationService.getStatusReport();
+    }
+    @GetMapping("/report-clients")
+    public List<CountClients> getCountClients(){
+        return reservationService.getTopClients();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getDatesReport(@PathVariable("dateOne")String d1, @PathVariable("dateTwo")String d2){
+       return reservationService.getReservationPeriod(d1, d2);
+    }    
 }
