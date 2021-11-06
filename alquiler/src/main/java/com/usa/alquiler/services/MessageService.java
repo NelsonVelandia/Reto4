@@ -46,9 +46,15 @@ public class MessageService {
         if(message.getIdMessage() != null){
             Optional<Message> mess = messageRepository.getMessageId(message.getIdMessage());
             if(mess.isPresent()){
-                if(message.getMessageText() != null){
+                if(message.getMessageText() != null){//Mensaje es actualizable.
                     mess.get().setMessageText(message.getMessageText());
-                }               
+                }//El id no esta porque no es editable.
+                if(message.getOrtopedic() != null){//Ortopedic es actualizable
+                    mess.get().setOrtopedic(message.getOrtopedic());
+                }
+                if(message.getClient() != null){//Cliente es actualizable
+                    mess.get().setClient(message.getClient());
+                }
                 return messageRepository.save(mess.get());
             }
         }

@@ -59,6 +59,9 @@ public class OrtopedicService {
                 if(ortopedic.getYear()!= null){
                     ortop.get().setYear(ortopedic.getYear());
                 }
+                if(ortopedic.getCategory()!= null){
+                    ortop.get().setCategory(ortopedic.getCategory());
+                }
                 
                 return ortopedicRepository.save(ortop.get());
             }

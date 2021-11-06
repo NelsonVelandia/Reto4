@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <title>Reto5 by Nelson Velandia</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/misFunciones.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <h1 class="text-md-center m-4">Alquiler de Ortesis</h1>
+    <h2>Section Category</h2>
+    <br>
+    <div id="resultCategory"></div>
+    <br>
+    <div id="formato" class="form-group container text-center">
+        <!--<input type="number" id="idCategory" placeholder="id"> -->
+        <input class="form-control m-3" style="width: 18em" hidden="true" type="number" id="idCategory" placeholder="id"
+            disabled>
+        <input class="form-control m-3" style="width: 18em" type="text" id="nameCategory" placeholder="name_Category">
+        <input class="form-control m-3" style="width: 18em" type="text" id="descriptionCategory"
+            placeholder="description_Category">
+        <br>
+        <button class="btn btn-primary mb-3" onclick="getCategory()">Consultar</button>
+        <button class="btn btn-primary mb-3" onclick="saveCategory()">Guardar</button>
+        <button class="btn btn-primary mb-3" onclick="updateCategory()">Editar</button>
+    </div>
+    <hr>
+    <h2>Section Ortopedic</h2>
+    <br>
+    <div id="resultOrtopedic"></div>
+    <br>
+    <div id="formato" class="form-group container text-center">
+        <input hidden="true" class="form-control m-3" style="width: 18em" type="number" id="idOrtopedic"
+            placeholder="id" disabled>
+        <input class="form-control m-3" style="width: 18em" type="text" id="nameOrtopedic" placeholder="name">
+        <input class="form-control m-3" style="width: 18em" type="text" id="brandOrtopedic" placeholder="brand">
+        <input class="form-control m-3" style="width: 18em" type="number" id="yearOrtopedic" min="2000" max="2025" placeholder="year">
+        <input class="form-control m-3" style="width: 18em" type="text" id="descriptionOrtopedic" placeholder="description">
+        <!--input class="form-control m-3" style="width: 18em" type="number" id="categoryOrtopedic" min="1" max="1000" placeholder="Id_Category"-->
+        <select class="form-select m-3" style="width: 18em" name="ortop" id="categoryId" onpointerdown="getCategory();">
+            <option value="">Seleccione la Categoria</option>
+        </select>
+        <br>
+        <button class="btn btn-primary mb-3" onclick="getOrtopedic()">Consultar</button>
+        <button class="btn btn-primary mb-3" onclick="saveOrtopedic()">Guardar</button>
+        <button class="btn btn-primary mb-3" onclick="updateOrtopedic()">Editar</button>
+    </div>
+    <hr>
+    <h2>Section Client</h2>
+    <br>
+    <div id="resultClient"></div>
+    <br>
+    <div id="formato" class="form-group container text-center">
+        <input hidden="true" class="form-control m-3" style="width: 18em" type="number" id="idClient" placeholder="id"
+            disabled>
+        <input class="form-control m-3" style="width: 18em" type="text" id="nameClient" placeholder="name">
+        <input class="form-control m-3" style="width: 18em" type="email" id="emailClient" placeholder="email_client">
+        <input class="form-control m-3" style="width: 18em" type="password" id="passwordClient" placeholder="password">
+        <input class="form-control m-3" style="width: 18em" type="number" id="ageClient" min="18" max="99"
+            placeholder="age">
+        <br>
+        <button class="btn btn-primary mb-3" onclick="getClient()">Consultar</button>
+        <button class="btn btn-primary mb-3" onclick="saveClient()">Guardar</button>
+        <button class="btn btn-primary mb-3" onclick="updateClient()">Editar</button>
+    </div>
+    <hr>
+    <h2>Section Message</h2>
+    <br>
+    <div id="resultMessage"></div>
+    <br>
+    <div id="formato" class="form-group container text-center">
+        <input hidden="true" class="form-control m-3" style="width: 18em" type="number" id="idMessage" placeholder="id"
+            disabled>
+        <input class="form-control m-3" style="width: 18em" type="text" id="textMessage" placeholder="message">
+        <select class="form-select m-3" style="width: 18em" name="mess" id="ortopedicId" onpointerdown="getOrtopedic();">
+            <option value="">Seleccione la Ortesis</option>
+        </select>
+        <select class="form-select m-3" style="width: 18em" name="clie" id="clientId" onpointerdown="getClient();">
+            <option value="">Seleccione el Cliente</option>
+        </select>
+        <br>
+        <button class="btn btn-primary mb-3" onclick="getMessage()">Consultar</button>
+        <button class="btn btn-primary mb-3" onclick="saveMessage()">Guardar</button>
+        <button class="btn btn-primary mb-3" onclick="updateMessage()">Editar</button>
+    </div>
+    <hr>
+    <h2>Section Reservation</h2>
+    <br>
+    <div id="resultReservation"></div>
+    <br>
+    <div id="formato" class="form-group container text-center">
+        <input class="form-control m-3" style="width: 18em" type="number" id="idReservation" placeholder="id_Reservation" disabled>
+        <select class="form-select m-3" style="width: 18em" name="reservOrtope" id="ortopedicReser" onpointerdown="getOrtopedic();">
+            <option value="">Seleccione la Ortesis</option>
+        </select>
+        <input class="form-control m-3" style="width: 18em" type="date" id="startDate" placeholder="Start_Date">
+        <input class="form-control m-3" style="width: 18em" type="date" id="devolutionDate" placeholder="Devolution_Date">
+        <select class="form-select m-3" style="width: 18em" name="clieReser" id="clientReser" onpointerdown="getClient();">
+            <option value="">Seleccione el Cliente</option>
+        </select>
+        <select class="form-select m-3" style="width: 18em" id="status" name="select">
+            <option value="Completed">Completed</option>
+            <option value="Created" selected>Created</option>
+            <option value="Cancelled">Cancelled</option>
+        </select>  
+        <br>
+        <button class="btn btn-primary mb-3" onclick="getReservation()">Consultar</button>
+        <button class="btn btn-primary mb-3" onclick="saveReservation()">Guardar</button>
+        <button class="btn btn-primary mb-3" onclick="updateReservation()">Editar</button>
+    </div>
+</body>
+
+</html>

@@ -57,7 +57,19 @@ public class ReservationService {
                 }
                 if(reservation.getDevolutionDate() != null){
                     reserv.get().setDevolutionDate(reservation.getDevolutionDate());
-                }                             
+                }
+                if(reservation.getScore() != null){
+                    reserv.get().setScore(reservation.getScore());
+                }
+                if(reservation.getClient() != null){
+                    reserv.get().setClient(reservation.getClient());
+                }
+                if(reservation.getOrtopedic() != null){
+                    reserv.get().setOrtopedic(reservation.getOrtopedic());
+                }
+                if(reservation.getStatus() != null){
+                    reserv.get().setStatus(reservation.getStatus());
+                }
                 return reservationRepository.save(reserv.get());
             }
         }
